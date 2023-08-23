@@ -1,6 +1,7 @@
 # Tetris with C#
 
-[Download Game](./Releases/Tetris 1.0.zip)
+[Download Game](https://github.com/Dysax/Tetris/Releases/Tetris1.0.zip)
+
 
 
 ## Controls
