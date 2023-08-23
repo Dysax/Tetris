@@ -1,5 +1,8 @@
 # Tetris with C#
 
+[Download Game](./Releases/Tetris 1.0.zip)
+
+
 ## Controls
 
 - **Arrow keys:**
