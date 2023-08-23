@@ -1,6 +1,6 @@
 # Tetris with C#
 
-[Download Game](https://github.com/Dysax/Tetris/Releases/Tetris1.0.zip)
+[Download Game]([https://github.com/Dysax/Tetris/Releases/Tetris1.0.zip](https://github.com/Dysax/Tetris/blob/master/Releases/Tetris%201.0.zip))
 
 
 
