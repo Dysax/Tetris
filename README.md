@@ -2,6 +2,8 @@
 
 [Download Game](https://github.com/Dysax/Tetris/releases/tag/v1.0.0)
 
+![Tetris Screenshot](https://github.com/Dysax/Tetris/blob/master/TetrisAssets/Tetris%201.png)
+![Tetris Screenshot](https://github.com/Dysax/Tetris/blob/master/TetrisAssets/tetris%202.png)
 
 
 
