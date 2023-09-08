@@ -12,26 +12,58 @@ namespace Tetris
         {
             new GameAbility
             {
-                Description = "TEST - TEST - TEST - TEST - TEST",
+                Description = "TEST1",
                 Ability = (GameState gameState) =>
                 {
-                    // apply ability here based on your existing GameState and GameAbility classes
+                    // apply ability here
                 }
             },
             new GameAbility
             {
-                Description = "TEST - TEST - TEST",
+                Description = "TEST2",
                 Ability = (GameState gameState) =>
                 {
-                    // apply ability here based on your existing GameState and GameAbility classes
+                    // apply ability here
                 }
             },
             new GameAbility
             {
-                Description = "TEST",
+                Description = "TEST3",
                 Ability = (GameState gameState) =>
                 {
-                    // apply ability here based on your existing GameState and GameAbility classes
+                    // apply ability here
+                }
+            },
+            new GameAbility
+            {
+                Description = "TEST4",
+                Ability = (GameState gameState) =>
+                {
+                    // apply ability here
+                }
+            },
+            new GameAbility
+            {
+                Description = "TEST5",
+                Ability = (GameState gameState) =>
+                {
+                    // apply ability here
+                }
+            },
+            new GameAbility
+            {
+                Description = "TEST6",
+                Ability = (GameState gameState) =>
+                {
+                    // apply ability here
+                }
+            },
+            new GameAbility
+            {
+                Description = "TEST7",
+                Ability = (GameState gameState) =>
+                {
+                    // apply ability here
                 }
             },
             // Add other abilities...
