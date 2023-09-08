@@ -51,10 +51,16 @@ namespace Tetris
 
         private GameState gameState = new GameState();
 
+
+        private AbilityManager abilityManager = new AbilityManager();
+
+
         public MainWindow()
         {
             InitializeComponent();
             imageControls = SetupGameCanvas(gameState.GameGrid);
+            gameState.OnNewAbilitiesAvailable += UpdateAbilityButtons;
+
         }
 
         private Image[,] SetupGameCanvas(GameGrid grid)
@@ -223,11 +229,70 @@ namespace Tetris
             await GameLoop();
         }
 
-        private async void Resume_Click(Object sender, RoutedEventArgs e)
+        private async void Option1Button_Click(object sender, RoutedEventArgs e)
         {
+            if (sender is Button button && button.Tag is GameAbility ability)
+            {
+                ability.Ability(gameState);
+            }
+
+            // Close the select screen and continue the game
             SelectScreen.Visibility = Visibility.Hidden;
             gameState.Select = false;
             await GameLoop();
         }
+
+        private async void Option2Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.Tag is GameAbility ability)
+            {
+                ability.Ability(gameState);
+            }
+
+            // Close the select screen and continue the game
+            SelectScreen.Visibility = Visibility.Hidden;
+            gameState.Select = false;
+            await GameLoop();
+        }
+
+        private async void Option3Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.Tag is GameAbility ability)
+            {
+                ability.Ability(gameState);
+            }
+
+            // Close the select screen and continue the game
+            SelectScreen.Visibility = Visibility.Hidden;
+            gameState.Select = false;
+            await GameLoop();
+        }
+
+        public class AbilitiesEventArgs : EventArgs
+        {
+            public List<GameAbility> Abilities { get; }
+
+            public AbilitiesEventArgs(List<GameAbility> abilities)
+            {
+                Abilities = abilities;
+            }
+        }
+
+
+        private void UpdateAbilityButtons(object sender, GameState.AbilitiesEventArgs e)
+        {
+            Option1Button.Content = e.Abilities[0].Description;
+            Option1Button.Tag = e.Abilities[0];
+
+            Option2Button.Content = e.Abilities[1].Description;
+            Option2Button.Tag = e.Abilities[1];
+
+            Option3Button.Content = e.Abilities[2].Description;
+            Option3Button.Tag = e.Abilities[2];
+        }
+
+
+
+
     }
 }

@@ -115,23 +115,23 @@
                    FontSize="36"
                    TextAlignment="Center"/>
 
-                <Button Content="Option 1"
+                <Button Name="Option1Button"
                 Background="LightGreen"
                 Margin="0,20,0,0"
                 Padding="5"
-                Click="Resume_Click"/>
+                Click="Option1Button_Click"/>
 
-                <Button Content="Option 2"
+                <Button Name="Option2Button"
                 Background="LightGreen"
                 Margin="0,20,0,0"
                 Padding="5"
-                Click="Resume_Click"/>
+                Click="Option2Button_Click"/>
 
-                <Button Content="Option 3"
+                <Button Name="Option3Button"
                 Background="LightGreen"
                 Margin="0,20,0,0"
                 Padding="5"
-                Click="Resume_Click"/>
+                Click="Option3Button_Click"/>
             </StackPanel>
         </Grid>
     </Grid>

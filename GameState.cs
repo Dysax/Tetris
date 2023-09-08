@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Tetris.MainWindow;
 
 namespace Tetris
 {
     public class GameState
     {
         private Block currentBlock;
+        public event EventHandler<AbilitiesEventArgs> OnNewAbilitiesAvailable;
+
+
 
         public Block CurrentBlock
         {
@@ -29,6 +33,7 @@ namespace Tetris
                 }
             }
         }
+        
 
         public GameGrid GameGrid { get; }
         public BlockQueue BlockQueue { get; }
@@ -38,6 +43,19 @@ namespace Tetris
         public int LineCount { get; set; }
         public Block HeldBlock { get; private set; }
         public bool CanHold { get; private set; }
+        public Action<GameState> Ability { get; set; }
+
+
+        public class AbilitiesEventArgs : EventArgs
+        {
+            public List<GameAbility> Abilities { get; }
+
+            public AbilitiesEventArgs(List<GameAbility> abilities)
+            {
+                Abilities = abilities;
+            }
+        }
+
 
         public GameState()
         {
@@ -140,7 +158,16 @@ namespace Tetris
             if ((LineCount % 5) + tempScore >= 5)
             {
                 Select = true;
+
+                //get random ability for the select screen
+                var randomAbility = AbilityManager.GetRandomAbilities(3);
+
+
+                List<GameAbility> currentAbilities = AbilityManager.GetRandomAbilities(3);
+                OnNewAbilitiesAvailable?.Invoke(this, new AbilitiesEventArgs(currentAbilities));
+
             }
+
             LineCount += tempScore;
             
 
@@ -195,5 +222,11 @@ namespace Tetris
             CurrentBlock.Move(BlockDropDistance(), 0);
             PlaceBlock();
         }
+
+        public void TriggerNewAbilitiesAvailable(List<GameAbility> newAbilities)
+        {
+            OnNewAbilitiesAvailable?.Invoke(this, new AbilitiesEventArgs(newAbilities));
+        }
+
     }
 }
