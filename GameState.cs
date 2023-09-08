@@ -32,8 +32,10 @@ namespace Tetris
 
         public GameGrid GameGrid { get; }
         public BlockQueue BlockQueue { get; }
-        public bool GameOver { get; private set; }
+        public bool GameOver { get; set; }
+        public bool Select { get; set; }
         public int Score { get; private set; }
+        public int LineCount { get; set; }
         public Block HeldBlock { get; private set; }
         public bool CanHold { get; private set; }
 
@@ -43,6 +45,7 @@ namespace Tetris
             BlockQueue = new BlockQueue();
             CurrentBlock = BlockQueue.GetAndUpdate();
             CanHold = true;
+            Select = false;
         }
 
         private bool BlockFits()
@@ -124,6 +127,7 @@ namespace Tetris
             return !(GameGrid.IsRowEmpty(0) && GameGrid.IsRowEmpty(1));
         }
 
+
         private void PlaceBlock()
         {
             foreach (Position p in CurrentBlock.TilePositions())
@@ -131,7 +135,14 @@ namespace Tetris
                 GameGrid[p.Row, p.Column] = CurrentBlock.Id;
             }
 
-            Score += GameGrid.ClearFullRows() * 10;
+            int tempScore = GameGrid.ClearFullRows();
+            Score += tempScore * 10;
+            if ((LineCount % 5) + tempScore >= 5)
+            {
+                Select = true;
+            }
+            LineCount += tempScore;
+            
 
             if (IsGameOver())
             {

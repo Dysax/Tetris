@@ -140,6 +140,7 @@ namespace Tetris
             DrawNextBlock(gameState.BlockQueue);
             DrawHeldBlock(gameState.HeldBlock);
             ScoreText.Text = $"Score: {gameState.Score}";
+            LineText.Text = $"Lines: {gameState.LineCount}";
 
         }
 
@@ -151,8 +152,7 @@ namespace Tetris
             int scoreThreshold = 50; // The score threshold for speeding up
             int decreaseInterval = 50; // Amount to decrease delay by
 
-
-            while (!gameState.GameOver)
+            while (!gameState.GameOver && !gameState.Select)
             {
                 int currentDelay = baseDelay - (gameState.Score / scoreThreshold) * decreaseInterval;
                 currentDelay = Math.Max(currentDelay, minDelay);
@@ -162,8 +162,15 @@ namespace Tetris
                 Draw(gameState);
             }
 
-            GameOverMenu.Visibility = Visibility.Visible;
-            FinalScoreText.Text = $"Score: {gameState.Score}";
+            if (gameState.GameOver)
+            {
+                GameOverMenu.Visibility = Visibility.Visible;
+                FinalScoreText.Text = $"Score: {gameState.Score}";
+            }
+            else if (gameState.Select)
+            {
+                SelectScreen.Visibility = Visibility.Visible;
+            }
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -213,6 +220,13 @@ namespace Tetris
         {
             gameState = new GameState();
             GameOverMenu.Visibility = Visibility.Hidden;
+            await GameLoop();
+        }
+
+        private async void Resume_Click(Object sender, RoutedEventArgs e)
+        {
+            SelectScreen.Visibility = Visibility.Hidden;
+            gameState.Select = false;
             await GameLoop();
         }
     }
