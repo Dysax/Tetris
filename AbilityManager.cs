@@ -12,10 +12,14 @@ namespace Tetris
         {
             new GameAbility
             {
-                Description = "TEST1",
+                // clear entire board
+                Description = "Clear the Board",
                 Ability = (GameState gameState) =>
                 {
-                    // apply ability here
+                    for (int r = 0; r < gameState.GameGrid.Rows; r++)
+                    {
+                        gameState.GameGrid.ClearRow(r); // assuming ClearRow takes the row index as a parameter
+                    }
                 }
             },
             new GameAbility

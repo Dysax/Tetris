@@ -54,8 +54,8 @@ namespace Tetris
             }
             return true;
         }
-
-        private void ClearRow(int r)
+        // changed this from private to public for use in an ability
+        public void ClearRow(int r)
         {
             for (int c = 0;c < Columns; c++)
             {
