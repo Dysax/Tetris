@@ -5,7 +5,7 @@
 ![Tetris Screenshot](https://github.com/Dysax/Tetris/blob/master/TetrisAssets/Tetris%201.png)
 ![Tetris Screenshot](https://github.com/Dysax/Tetris/blob/master/TetrisAssets/tetris%202.png)
 
-
+The game is being developed to include roguelike elements. 
 
 ## Controls
 
